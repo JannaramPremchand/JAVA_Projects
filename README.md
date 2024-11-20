@@ -112,3 +112,17 @@ The **JDBC_XPOLL_SQL_PRACTICE** section integrates SQL queries into a Java appli
   - **Error Handling**: Manage database errors and handle exceptions for database integrity and smooth operation.
   
 - **Skills Used:** SQL, JDBC, Aggregate Functions, Joins, Subqueries, Transactions, Data Integrity, SQL Injection Prevention.
+
+### 11. **QEats**
+**QEats** is a popular food ordering app that allows users to browse and order their favorite dishes from nearby restaurants. This project involved building and optimizing the backend of the application using Spring Boot.
+
+- **Scope of Work:**
+  - Implemented the `GET /api/v1/restaurants` endpoint along with the corresponding request handlers and response methods.
+  - Used Mockito to develop the relevant MVCS layers independently.
+  - Retrieved restaurant data from MongoDB based on a user's location.
+  - Improved application performance under large load scenarios.
+  - Added an advanced search feature to enhance the app's usability.
+  - Investigated and resolved production issues using Scientific Debugging methods.
+
+- **Skills Used:** 
+  Spring Boot, Spring Data, REST API, Jackson, Mockito, JUnit, MongoDB
