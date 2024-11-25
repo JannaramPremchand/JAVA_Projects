@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VideoService {
@@ -14,27 +15,18 @@ public class VideoService {
     private VideoRepository videoRepository;
 
     public List<Video> getAllVideos() {
-        return videoRepository.findAll();
+        return videoRepository.findAll();  // Get all videos from the repository
     }
 
     public Video addVideo(Video video) {
-        return videoRepository.save(video);
+        return videoRepository.save(video);  // Add a new video
     }
 
-    public Video updateVideo(Long id, Video updatedVideo) {
-        Video video = videoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Video not found with id: " + id));
-        video.setTitle(updatedVideo.getTitle());
-        video.setDirector(updatedVideo.getDirector());
-        video.setGenre(updatedVideo.getGenre());
-        video.setAvailable(updatedVideo.isAvailable());
-        return videoRepository.save(video);
+    public void deleteVideo(Long videoId) {
+        videoRepository.deleteById(videoId);  // Delete a video by its ID
     }
 
-    public void deleteVideo(Long id) {
-        if (!videoRepository.existsById(id)) {
-            throw new RuntimeException("Video not found with id: " + id);
-        }
-        videoRepository.deleteById(id);
+    public Optional<Video> getVideoById(Long videoId) {
+        return videoRepository.findById(videoId);  // Get video by ID
     }
 }

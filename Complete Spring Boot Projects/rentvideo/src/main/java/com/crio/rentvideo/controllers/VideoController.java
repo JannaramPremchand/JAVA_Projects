@@ -1,14 +1,12 @@
 package com.crio.rentvideo.controllers;
 
 import com.crio.rentvideo.models.Video;
+import com.crio.rentvideo.models.User;
 import com.crio.rentvideo.services.VideoService;
-import jakarta.validation.Valid;
+import com.crio.rentvideo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/videos")
@@ -17,24 +15,38 @@ public class VideoController {
     @Autowired
     private VideoService videoService;
 
-    @GetMapping
-    public List<Video> getAllVideos() {
-        return videoService.getAllVideos();
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/{videoId}/rent")
+    public ResponseEntity<String> rentVideo(@PathVariable Long videoId, @RequestHeader("Authorization") String token) {
+        User user = userService.getUserFromToken(token);  // Extract user from JWT token
+        
+        if (user.getRentals().size() >= 2) {
+            return ResponseEntity.status(400).body("Cannot rent more than two videos");
+        }
+
+        Video video = videoService.getVideoById(videoId).orElseThrow(() -> new RuntimeException("Video not found"));
+        video.setAvailable(false);  // Set video as rented
+        videoService.addVideo(video);  // Save the video
+
+        user.getRentals().add(video);
+        userService.saveUser(user);
+
+        return ResponseEntity.ok("Video rented successfully");
     }
 
-    @PostMapping("/manage")
-    public ResponseEntity<Video> addVideo(@Valid @RequestBody Video video) {
-        return new ResponseEntity<>(videoService.addVideo(video), HttpStatus.CREATED);
-    }
+    @PostMapping("/{videoId}/return")
+    public ResponseEntity<String> returnVideo(@PathVariable Long videoId, @RequestHeader("Authorization") String token) {
+        User user = userService.getUserFromToken(token);  // Extract user from JWT token
 
-    @PutMapping("/manage/{id}")
-    public ResponseEntity<Video> updateVideo(@PathVariable Long id, @Valid @RequestBody Video video) {
-        return ResponseEntity.ok(videoService.updateVideo(id, video));
-    }
+        Video video = videoService.getVideoById(videoId).orElseThrow(() -> new RuntimeException("Video not found"));
+        video.setAvailable(true);  // Mark video as available again
+        videoService.addVideo(video);  // Save the video
 
-    @DeleteMapping("/manage/{id}")
-    public ResponseEntity<String> deleteVideo(@PathVariable Long id) {
-        videoService.deleteVideo(id);
-        return ResponseEntity.ok("Video deleted successfully");
+        user.getRentals().remove(video);  // Remove rental from user
+        userService.saveUser(user);
+
+        return ResponseEntity.ok("Video returned successfully");
     }
 }
