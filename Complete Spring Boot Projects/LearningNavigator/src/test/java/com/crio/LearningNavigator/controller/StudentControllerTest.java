@@ -34,11 +34,11 @@ public class StudentControllerTest {
 
     @Test
     public void testRegisterStudent() throws Exception {
-        String requestBody = "{\"studentName\": \"Prajwal\"}";
+        String requestBody = "{\"studentName\": \"Prem\"}";
 
         Student student = new Student();
         student.setId(1);
-        student.setName("Prajwal");
+        student.setName("Prem");
 
         when(studentService.registerStudent(any(RegisterStudentRequest.class))).thenReturn(student);
 
@@ -47,7 +47,7 @@ public class StudentControllerTest {
             .content(requestBody))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.id").value(1))
-            .andExpect(jsonPath("$.name").value("Prajwal"));
+            .andExpect(jsonPath("$.name").value("Prem"));
 
         verify(studentService, times(1)).registerStudent(any(RegisterStudentRequest.class));
     }
@@ -56,13 +56,13 @@ public class StudentControllerTest {
     public void testGetStudentById() throws Exception {
         Student student = new Student();
         student.setId(1);
-        student.setName("Prajwal");
+        student.setName("Prem");
 
         when(studentService.findStudentById(1)).thenReturn(student);
 
         mockMvc.perform(get("/students/{studentId}", 1))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.id").value(1))
-            .andExpect(jsonPath("$.name").value("Prajwal"));
+            .andExpect(jsonPath("$.name").value("Prem"));
     }
 }
