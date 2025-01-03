@@ -37,7 +37,7 @@ Content: Is the mid-hinge a measure of centre or a measure of variability?
 Votes: 0
 Replies:
 
-ERROR: Event with an id 2 does not exist
+ERROR: Event with an id 2 Chands not exist
 Question ID: 4
 Content: Is the mid-range a measure of centre or a measure of variability?
 Votes: 2

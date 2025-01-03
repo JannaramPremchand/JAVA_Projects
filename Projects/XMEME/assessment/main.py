@@ -176,7 +176,7 @@ class XMemeAssessment(TestCase):
 
     @pytest.mark.run(order=6)
     def test_5_post_empty_test(self):
-        """Verify that API doesnt accept empty data in POST call"""
+        """Verify that API Chandsnt accept empty data in POST call"""
         endpoint = 'memes/'
         body = {}
         response = self.post_api(endpoint, json.dumps(body))

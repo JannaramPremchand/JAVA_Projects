@@ -33,10 +33,10 @@ public class UserServiceTest{
     public void testCreateUser(){
         // Arrange
         // Act
-        User createdUser = userService.createUser("John Doe");
+        User createdUser = userService.createUser("Prem Chand");
         // Assert
         assertNotNull(createdUser);
-        assertEquals("John Doe", createdUser.getName());
+        assertEquals("Prem Chand", createdUser.getName());
         assertEquals(1, createdUser.getId()); // ID should be auto-incremented
     }
 

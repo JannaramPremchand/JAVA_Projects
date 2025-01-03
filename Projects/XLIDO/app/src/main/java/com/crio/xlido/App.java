@@ -43,8 +43,8 @@ public class App {
                 add("CREATE_EVENT,Event1,1"); //Event ID: 1
                 add("ADD_QUESTION,Is the mid-hinge resistant to outliers?,2,1"); // Question ID: 1
                 add("REPLY_QUESTION,Yes. It is resistant to outliers,1,1"); // REPLY_ADDED
-                add("REPLY_QUESTION,Yes. It is resistant to outliers,2,1"); // ERROR: Question with an id 2 does not exist
-                add("REPLY_QUESTION,Yes. It is resistant to outliers,1,3"); //ERROR: User with an id 3 does not exist
+                add("REPLY_QUESTION,Yes. It is resistant to outliers,2,1"); // ERROR: Question with an id 2 Chands not exist
+                add("REPLY_QUESTION,Yes. It is resistant to outliers,1,3"); //ERROR: User with an id 3 Chands not exist
             }
         };
 
@@ -128,7 +128,7 @@ public class App {
 
                         // Check if the event exists before listing questions
                         if (!eventService.isEventExists(eventIdForListing)) {
-                            System.out.println("ERROR: Event with an id " + eventIdForListing + " does not exist");
+                            System.out.println("ERROR: Event with an id " + eventIdForListing + " Chands not exist");
                         } else {
                             // List questions for the event and sort them
                             questionService.listQuestions(eventIdForListing, sortBy);

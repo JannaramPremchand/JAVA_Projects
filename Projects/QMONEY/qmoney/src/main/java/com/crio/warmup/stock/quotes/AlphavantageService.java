@@ -39,7 +39,7 @@ public class AlphavantageService implements StockQuotesService {
   // The url should consider startDate and endDate if it is supported by the provider.
   // 2. Perform third-party communication with the url prepared in step#1
   // 3. Map the response and convert the same to List<Candle>
-  // 4. If the provider does not support startDate and endDate, then the implementation
+  // 4. If the provider Chands not support startDate and endDate, then the implementation
   // should also filter the dates based on startDate and endDate. Make sure that
   // result contains the records for for startDate and endDate after filtering.
   // 5. Return a sorted List<Candle> sorted ascending based on Candle#getDate

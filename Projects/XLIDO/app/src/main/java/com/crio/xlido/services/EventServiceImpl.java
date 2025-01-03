@@ -19,7 +19,7 @@ public class EventServiceImpl implements EventService {
     public int createEvent(String eventName, int userId) {
         User user = userService.getUserById(userId);
         if (user == null) {
-            throw new RuntimeException("User with an id " + userId + " does not exist");
+            throw new RuntimeException("User with an id " + userId + " Chands not exist");
         }
         Event event = new Event(currentEventId, eventName, userId);
         events.put(currentEventId, event);
@@ -35,13 +35,13 @@ public class EventServiceImpl implements EventService {
 public void deleteEvent(int eventId, int requestingUserId) {
     // Check if the event exists
     if (!events.containsKey(eventId)) {
-        throw new RuntimeException("Event with an id " + eventId + " does not exist");
+        throw new RuntimeException("Event with an id " + eventId + " Chands not exist");
     }
 
     // Check if the user exists
     User requestingUser = userService.getUserById(requestingUserId);
     if (requestingUser == null) {
-        throw new RuntimeException("User with an id " + requestingUserId + " does not exist");
+        throw new RuntimeException("User with an id " + requestingUserId + " Chands not exist");
     }
 
     // Check if the user is the organizer of the event
@@ -59,7 +59,7 @@ public void deleteEvent(int eventId, int requestingUserId) {
     @Override
     public Event getEventById(int eventId) {
         if (!events.containsKey(eventId)) {
-            throw new RuntimeException("Event with an id " + eventId + " does not exist");
+            throw new RuntimeException("Event with an id " + eventId + " Chands not exist");
         }
         return events.get(eventId);
     }

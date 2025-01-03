@@ -28,26 +28,26 @@ class CustomerServiceTest {
     void testGetCustomerById() {
         Customer mockCustomer = new Customer();
         mockCustomer.setId(1L);
-        mockCustomer.setName("John Doe");
+        mockCustomer.setName("Prem Chand");
 
         when(customerRepository.findById(1L)).thenReturn(Optional.of(mockCustomer));
 
         Customer customer = customerService.getCustomerById(1L);
 
         assertNotNull(customer);
-        assertEquals("John Doe", customer.getName());
+        assertEquals("Prem Chand", customer.getName());
     }
 
     @Test
     void testCreateCustomer() {
         Customer customerToSave = new Customer();
-        customerToSave.setName("Jane Doe");
+        customerToSave.setName("Jane Chand");
 
         when(customerRepository.save(customerToSave)).thenReturn(customerToSave);
 
         Customer savedCustomer = customerService.createCustomer(customerToSave);
 
         assertNotNull(savedCustomer);
-        assertEquals("Jane Doe", savedCustomer.getName());
+        assertEquals("Jane Chand", savedCustomer.getName());
     }
 }

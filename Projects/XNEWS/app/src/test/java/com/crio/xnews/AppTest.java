@@ -35,8 +35,8 @@ public class AppTest {
         FileWriter writer = new FileWriter(testFile);
         
         // Write test data to the JSON file
-        writer.write("[{\"name\":\"John Doe\",\"query\":\"technology\",\"language\":\"en\",\"sortBy\":\"relevance\"}," +
-                "{\"name\":\"Jane Doe\",\"query\":\"health\",\"language\":\"es\",\"sortBy\":\"popularity\"}]");
+        writer.write("[{\"name\":\"Prem Chand\",\"query\":\"technology\",\"language\":\"en\",\"sortBy\":\"relevance\"}," +
+                "{\"name\":\"Jane Chand\",\"query\":\"health\",\"language\":\"es\",\"sortBy\":\"popularity\"}]");
         writer.close(); // Close the writer to ensure data is written to the file
     }
 
@@ -69,14 +69,14 @@ public class AppTest {
 
         // Validate the first user preference
         UserPreference user1 = userPreferences.get(0);
-        assertEquals("John Doe", user1.getName());
+        assertEquals("Prem Chand", user1.getName());
         assertEquals("technology", user1.getQuery());
         assertEquals("en", user1.getLanguage());
         assertEquals("relevance", user1.getSortBy());
 
         // Validate the second user preference
         UserPreference user2 = userPreferences.get(1);
-        assertEquals("Jane Doe", user2.getName());
+        assertEquals("Jane Chand", user2.getName());
         assertEquals("health", user2.getQuery());
         assertEquals("es", user2.getLanguage());
         assertEquals("popularity", user2.getSortBy());

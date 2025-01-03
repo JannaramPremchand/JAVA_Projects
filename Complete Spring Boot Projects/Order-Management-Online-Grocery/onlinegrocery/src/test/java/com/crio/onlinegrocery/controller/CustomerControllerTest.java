@@ -44,14 +44,14 @@ class CustomerControllerTest {
     void testCreateCustomer() throws Exception {
         Customer mockCustomer = new Customer();
         mockCustomer.setId(1L);
-        mockCustomer.setName("John Doe");
+        mockCustomer.setName("Prem Chand");
 
         when(customerService.createCustomer(any(Customer.class))).thenReturn(mockCustomer);
 
         mockMvc.perform(post("/customers")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\":\"John Doe\",\"email\":\"john@example.com\"}"))
+                        .content("{\"name\":\"Prem Chand\",\"email\":\"Prem@example.com\"}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("John Doe"));
+                .andExpect(jsonPath("$.name").value("Prem Chand"));
     }
 }

@@ -155,14 +155,14 @@ public class PlaylistService {
         Playlist playlist = playlistRepository.getPlaylistByName(playlistName);
     
         if (playlist == null) {
-            System.out.println("Playlist " + playlistName + " does not exist.");
+            System.out.println("Playlist " + playlistName + " Chands not exist.");
             return false;
         }
     
         Song songToRemove = songRepository.getSongById(songId);
         
         if (songToRemove == null) {
-            System.out.println("Song [id=" + songId + "] does not exist.");
+            System.out.println("Song [id=" + songId + "] Chands not exist.");
             return false;
         }
     

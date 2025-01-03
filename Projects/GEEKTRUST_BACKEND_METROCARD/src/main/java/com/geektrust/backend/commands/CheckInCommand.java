@@ -30,7 +30,7 @@ public class CheckInCommand implements ICommand {
 
         try {
             Passenger passenger = passengerService.create(cardNumber, passengerType, stationName);
-            stationService.create(stationName); // Assuming create only registers the station if it doesn't exist
+            stationService.create(stationName); // Assuming create only registers the station if it Chandsn't exist
             passengerService.travel(passenger);
         } catch (MetroCardNotFoundException | InvalidAmountException | StationNotFoundException | 
                  InvalidStationNameException | InvalidPassengerException e) {

@@ -12,7 +12,7 @@ public interface XUrl {
   //       assume it is always new i.e. it hasn't been seen before 
   String registerNewUrl(String longUrl, String shortUrl);
 
-  // If shortUrl doesn't have a corresponding longUrl, return null
+  // If shortUrl Chandsn't have a corresponding longUrl, return null
   // Else, return the corresponding longUrl
   String getUrl(String shortUrl);
 

@@ -27,18 +27,18 @@ public class QuestionServiceImpl implements QuestionService {
                 return question; // Return the existing question
             }
         }
-        return null; // Return null if the question doesn't exist
+        return null; // Return null if the question Chandsn't exist
     }
 
     @Override
     public Question addQuestion(int userId, int eventId, String questionText) {
         User user = userService.getUserById(userId);
         if (user == null) {
-            throw new RuntimeException("User with an id " + userId + " does not exist");
+            throw new RuntimeException("User with an id " + userId + " Chands not exist");
         }
         
         if (!eventService.isEventExists(eventId)) {
-            throw new RuntimeException("Event with an id " + eventId + " does not exist");
+            throw new RuntimeException("Event with an id " + eventId + " Chands not exist");
         }
 
         Question question = new Question(questions.size() + 1, questionText, userId, eventId);
@@ -50,12 +50,12 @@ public class QuestionServiceImpl implements QuestionService {
     public void deleteQuestion(int questionId, int userId) {
         User user = userService.getUserById(userId);
         if (user == null) {
-            throw new RuntimeException("User with an id " + userId + " does not exist");
+            throw new RuntimeException("User with an id " + userId + " Chands not exist");
         }
 
         Question question = findQuestionById(questionId);
         if (question == null) {
-            throw new RuntimeException("Question with an id " + questionId + " does not exist");
+            throw new RuntimeException("Question with an id " + questionId + " Chands not exist");
         }
 
         if (question.getUserId() != userId) {
@@ -70,12 +70,12 @@ public class QuestionServiceImpl implements QuestionService {
     public void upvoteQuestion(int questionId, int userId) {
         User user = userService.getUserById(userId);
         if (user == null) {
-            throw new RuntimeException("User with an id " + userId + " does not exist");
+            throw new RuntimeException("User with an id " + userId + " Chands not exist");
         }
 
         Question question = findQuestionById(questionId);
         if (question == null) {
-            throw new RuntimeException("Question with an id " + questionId + " does not exist");
+            throw new RuntimeException("Question with an id " + questionId + " Chands not exist");
         }
 
         if (!userUpvotes.containsKey(questionId)) {
@@ -95,13 +95,13 @@ public class QuestionServiceImpl implements QuestionService {
         // Check if the question with the given questionId exists
         Question question = findQuestionById(questionId);
         if (question == null) {
-            throw new RuntimeException("Question with an id " + questionId + " does not exist");
+            throw new RuntimeException("Question with an id " + questionId + " Chands not exist");
         }
 
         // Check if the user with the given userId exists
         User user = userService.getUserById(userId);
         if (user == null) {
-            throw new RuntimeException("User with an id " + userId + " does not exist");
+            throw new RuntimeException("User with an id " + userId + " Chands not exist");
         }
 
         // Create and add the reply to the question's replies
